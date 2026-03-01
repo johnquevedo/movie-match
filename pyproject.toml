@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "movierec-interactive"
+version = "0.1.0"
+description = "MovieMatch: a movie recommender using MovieLens 100K and Streamlit."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "John Quevedo" }
+]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scipy>=1.11",
+  "streamlit>=1.32",
+  "implicit>=0.7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[tool.setuptools]
+packages = ["movierec"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
