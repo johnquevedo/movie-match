@@ -73,13 +73,15 @@ Popularity             0.0637                   0.0362           0.0589
 2. Make sure `pyproject.toml` is committed so Streamlit can install dependencies.
 3. In Streamlit Community Cloud, create a new app from the GitHub repository.
 4. Set the entrypoint to `app/streamlit_app.py`.
-5. Deploy without secrets; this project does not require API keys.
-6. After the app starts, use the provided scripts locally first to generate `artifacts/`. Because artifacts are gitignored, the simplest public deployment path is to retrain in the deployment environment or adapt the app to fetch prebuilt artifacts from external storage.
+5. Run `python scripts/download_data.py` and `python scripts/train_model.py` locally once so `artifacts/model_artifacts.pkl` exists.
+6. Commit `artifacts/model_artifacts.pkl` to GitHub, but do not commit `artifacts/data/`.
+7. Deploy without secrets; this project does not require API keys.
 
 ## Notes
 
 - The MovieLens dataset is not committed to the repository.
-- Trained artifacts are written to `./artifacts/` and ignored by git.
+- The trained model file `artifacts/model_artifacts.pkl` can be committed for Streamlit deployment.
+- Downloaded dataset files under `artifacts/data/` should stay out of git.
 - The recommendation explanations are intentionally simple and honest: they point to rated movies whose learned vectors are closest to the recommended movie.
 
 ## Testing
